@@ -1,0 +1,134 @@
+Classfile /E:/Java进阶训练营/第一周/practice/src/main/java/jvm/Hello.class
+  Last modified 2021-8-7; size 719 bytes
+  MD5 checksum 639ba343b079a49e17aad22123eedd54
+  Compiled from "Hello.java"
+public class jvm.Hello
+  minor version: 0
+  major version: 52                         // 代表jdk的版本52.0,为jdk8;51为jdk7,后面类推
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:                              // 常量池
+   #1 = Methodref          #6.#26         // java/lang/Object."<init>":()V
+   #2 = Methodref          #5.#27         // jvm/Hello.operation:(I)I
+   #3 = Fieldref           #28.#29        // java/lang/System.out:Ljava/io/PrintStream;
+   #4 = Methodref          #30.#31        // java/io/PrintStream.println:(I)V
+   #5 = Class              #32            // jvm/Hello
+   #6 = Class              #33            // java/lang/Object
+   #7 = Utf8               <init>
+   #8 = Utf8               ()V
+   #9 = Utf8               Code
+  #10 = Utf8               LineNumberTable
+  #11 = Utf8               LocalVariableTable
+  #12 = Utf8               this
+  #13 = Utf8               Ljvm/Hello;
+  #14 = Utf8               main
+  #15 = Utf8               ([Ljava/lang/String;)V
+  #16 = Utf8               j
+  #17 = Utf8               I
+  #18 = Utf8               args
+  #19 = Utf8               [Ljava/lang/String;
+  #20 = Utf8               i
+  #21 = Utf8               operation
+  #22 = Utf8               StackMapTable
+  #23 = Utf8               (I)I
+  #24 = Utf8               SourceFile
+  #25 = Utf8               Hello.java
+  #26 = NameAndType        #7:#8          // "<init>":()V
+  #27 = NameAndType        #21:#23        // operation:(I)I
+  #28 = Class              #34            // java/lang/System
+  #29 = NameAndType        #35:#36        // out:Ljava/io/PrintStream;
+  #30 = Class              #37            // java/io/PrintStream
+  #31 = NameAndType        #38:#39        // println:(I)V
+  #32 = Utf8               jvm/Hello
+  #33 = Utf8               java/lang/Object
+  #34 = Utf8               java/lang/System
+  #35 = Utf8               out
+  #36 = Utf8               Ljava/io/PrintStream;
+  #37 = Utf8               java/io/PrintStream
+  #38 = Utf8               println
+  #39 = Utf8               (I)V
+{
+  public jvm.Hello();                       // 当前类默认的无参构造
+    descriptor: ()V                         // 表示返回值为void空
+    flags: ACC_PUBLIC                       // 方法修饰符为public
+    Code:
+      stack=1, locals=1, args_size=1        // 栈深度1，本地变量数量1，参数数量1
+         0: aload_0                         // 0代表偏移码,从本地变量表加载第0个位置的变量(a前缀代表变量为引用类型)
+         1: invokespecial #1                // 调取类中的构造方法,也可以是private或者可见的超类方法,Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 6: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ljvm/Hello;
+
+  public static void main(java.lang.String[]);  // 类中静态的main方法
+    descriptor: ([Ljava/lang/String;)V          // 方法的参数为string,返回值为void
+    flags: ACC_PUBLIC, ACC_STATIC               // 方法修饰符：public  静态
+    Code:                                       // 格式为-偏移码: 操作码 操作数
+      stack=2, locals=4, args_size=1            // 栈深度为1,本地变量数量为4,方法参数数量为1
+         0: iconst_1                            // 压栈类型为int的常量1
+         1: istore_1                            // 放到位置为1的本地变量表里
+         2: iload_1                             // 把本地变量表位置为1的整数变量加载到栈
+         3: invokestatic  #2                    // 调取类中的静态方法,#2代表常量池中第2个,Method operation:(I)I
+         6: istore_2                            // 放到位置为2的本地变量表里
+         7: getstatic     #3                    // 获取静态方法 Field java/lang/System.out:Ljava/io/PrintStream;
+        10: iload_1                             // 把本地变量位置为1的压栈
+        11: invokevirtual #4                    // 调取类中公共、受保护和package级的私有方法,Method java/io/PrintStream.println:(I)V
+        14: iconst_0                            // 把int类型常量0压栈
+        15: istore_3                            // 放入位置为3的本地变量表中
+        16: iload_3                             // 加载压栈
+        17: iconst_5                            // 压栈int常量5
+        18: if_icmpge     40                    // 比较,如果成立跳转到偏移码40
+        21: iload_3                             // 变量表位置3的变量压栈
+        22: iconst_2                            // 压栈int常量2
+        23: irem                                // 跟上面取余
+        24: ifne          34                    // if判断
+        27: getstatic     #3                    // Field java/lang/System.out:Ljava/io/PrintStream;
+        30: iload_3
+        31: invokevirtual #4                    // 调取类中公共、受保护和package级的私有方法,Method java/io/PrintStream.println:(I)V
+        34: iinc          3, 1                  // 自增,本地变量表位置3的加1
+        37: goto          16                    // 跳转偏移码18
+        40: return                              // 返回
+      LineNumberTable:                          // 偏移量和代码行数的对应表
+        line 8: 0
+        line 9: 2
+        line 10: 7
+        line 11: 14
+        line 12: 21
+        line 13: 27
+        line 11: 34
+        line 16: 40
+      LocalVariableTable:                               // 本地变量表
+        Start  Length  Slot  Name   Signature           // 起始位置  长度  槽位  变量名字  变量类型
+           16      24     3     j   I                   //
+            0      41     0  args   [Ljava/lang/String; //
+            2      39     1     i   I                   //
+            7      34     2 operation   I               //
+      StackMapTable: number_of_entries = 3
+        frame_type = 254 /* append */
+          offset_delta = 16
+          locals = [ int, int, int ]
+        frame_type = 17 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 5
+
+  public static int operation(int);
+    descriptor: (I)I                            // 方法参数为int,返回值为int
+    flags: ACC_PUBLIC, ACC_STATIC               // 方法修饰符public static
+    Code:
+      stack=2, locals=1, args_size=1            // 栈深度为2，本地变量数量2，方法参数1
+         0: iload_0                             // 把变量表0位置的变量压栈
+         1: bipush        34                    // 放入数字34
+         3: imul                                // 前面两个值相乘
+         4: bipush        45                    // 数字45
+         6: isub                                // 相减
+         7: iconst_2                            // 压栈
+         8: idiv                                // 前面两个值相除
+         9: ireturn                             // 返回int
+      LineNumberTable:
+        line 19: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0     i   I
+}
+SourceFile: "Hello.java"
