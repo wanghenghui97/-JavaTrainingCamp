@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="aop1" class="com.lingfan.spring01.Aop1" />
+    <bean id="aop2" class="com.lingfan.spring01.Aop2" />
+
+
+    <aop:config>
+        <aop:pointcut id="p1" expression="execution(* com.lingfan.aop.*.*(..))"/>
+        <aop:aspect ref="aop1">
+            <aop:after-returning method="after" pointcut-ref="p1"/>
+            <aop:before method="before" pointcut-ref="p1"/>
+            <aop:around method="around" pointcut-ref="p1"/>
+        </aop:aspect>
+    </aop:config>
+
+    <context:component-scan base-package="com.lingfan.spring01" />
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+
+
+
+    <bean id="student123" class="com.lingfan.spring01.Student">
+        <property name="id" value="10086"/>
+        <property name="name" value="移动"/>
+    </bean>
+
+    <bean id="student456" class="com.lingfan.spring01.Student">
+        <property name="id" value="9527"/>
+        <property name="name" value="唐伯虎"/>
+    </bean>
+
+    <bean id="class1" class="com.lingfan.spring01.Clazz">
+        <property name="students">
+            <list>
+                <ref bean="student123"/>
+                <ref bean="student456"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="school" class="com.lingfan.spring01.School"></bean>
+</beans>
